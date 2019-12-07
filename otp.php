@@ -1,0 +1,45 @@
+<html>
+<body>
+<div class="container">
+<h1 class="text-center">Sending otp</h1>
+<br>
+<div class="row">
+<div class="col-md-9 col-md-offset-2">
+<?php
+if(isset($_POST["sendotp'])) {
+require('textlocal.class.php');
+$textlocal=new Textlocal(false,false, );
+$numbers=array(mobile);
+$sender='TXTLCL';
+$otp=mt_rand(10000,99999);
+$message="hello".$_POST['uname'] ."this is otp" .$otp;
+try{
+$result=$textlocal->sendSms($numbers,$message,$sender);
+setcookie('otp',$otp);
+echo "otp send sucess";
+}catch(Exception $e) {
+die('Error: '.$e->getMessage());
+}
+}
+if(isset($_POST['verifyotp']))
+$otp=$_POST['otp'];
+if($_COOKIE['otp']==$otp) {
+echo "congrats"
+}
+else
+{
+echo "please enter current otp";
+}
+}
+?>
+</div>
+<div class="col-md-9 col-md-offset-2">
+<form role="form" method="post" enctype="multipart/form-data">
+<div class="row">
+<div class="col-sm-9 form-group">
+<label for="uname">Name</label>
+<input type"text" class="form-control" id="uname" name="uname" value=""  maxlength="10" placeholder="enter name" required="" /></div>
+</div><div class="row" >
+<div class="col-sm-9 form-group">
+</body>
+</html>

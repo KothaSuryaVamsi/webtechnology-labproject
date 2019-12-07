@@ -1,0 +1,103 @@
+<html>
+<head>
+<title>signup page</title>
+<link rel="style sheets" type=text/css href="style.css"/>
+<script type="text/javascript">
+function validate(form1)
+{
+var emailid=window.document.form1.email.value;
+var phoneno=window.document.form1.phone.value;
+var at="@"
+var dot="."
+var lat=emailid.indexOf(at)
+var lstr=emailid.length
+var ldot=emailid.indexOf(dot)
+check=new RegExp("[^a-z A-Z 0-9]@[a-z]{3,}.[a-z]{2,}","g");
+check1=new RegExp("[^0-9]","g");
+if(phoneno.length!=10)
+{
+alter("phone num must contain 10 numbers");
+return false;
+}
+if(phoneno.match(check1))
+{
+alter("phone num must contain digits only");
+return false;
+}
+if(emailid.length==0)
+{
+alter("please enter email");
+return false;
+}
+else if(emailid.indexOf(at)==-1 || emailid.indexOf(at)==0 || emailid.indexOf(at)==lstr)
+{
+alert("please enter emailid correctly");
+return false;
+}
+else if(emailid.indexOf(at,(lat+1)!=-1)
+{
+alert("pelase enter email correctly");
+return false;
+}
+else if(emailid.indexOf(dot)==-1 || emailid.indexOf(dot)==0 || emailid.indexOf(dot)==lstr)
+{
+alert("pelase enter email correctly");
+return false;
+}
+else if(emailid.substring(lar-1,lat)==dot || emailid.substring(lat+1,lat+2)==dot)
+{
+alert("pelase enter email correctly");
+return false;
+}
+else if(emailid.indexOf(dot,(lat+2))==-1)
+{
+alert("pelase enter email correctly");
+return false;
+}
+else if(emailid.indexOf("")!=-1)
+{
+alert("please enter email correctly");
+return false;
+}
+else
+return true;
+}
+</script>
+</head>
+<body style="background-color:green">
+<h1><center><style="font-size:10">Sign-up</h1><hr>
+<form name="form1" method="post">
+<center>
+<table cellspacing="10">
+<tr>
+<td>username:</td><td><input type="text" placeholder="user id"></td>
+</tr>
+<tr>
+<td>email:</td><td><input type="text" placeholder="email"></td>
+</tr>
+<tr>
+<td>password:</td><td><input type="password" placeholder="password"></td>
+</tr>
+<tr>
+<td>conform:</td><td><input type="password" placeholder="conform"></td>
+</tr>
+<tr>
+<td>dateofbirth:</td><td><input type="date" name="d-o-b"></td>
+</tr>
+<tr>
+<td>phone no:</td><td><input type="text" placeholder="phone"></td>
+</tr>
+<tr>
+<td>gender:</td><td><input type="radio" id="gender" name="gender" value="male"/>Male</td>
+<td><input type="radio" id="gender" name="gender" value="female"/>Female</td>
+</tr>
+<tr>
+<td>address:</td><td><textarea></textarea></td>
+</tr>
+</table>
+<input type="submit" value="sign-up" onclick="return validate(this)"/>
+<input type="reset" value="reset">  
+</center>
+</form>
+</body>
+</html>

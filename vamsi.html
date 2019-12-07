@@ -1,0 +1,90 @@
+<html>
+<head>
+<title>login page</title>
+<link rel="style sheets" type=text/css href="style.css"/>
+<script type="text/javascript">
+function validate(form1)
+{
+var phoneno=window.document.form1.phone.value;
+var password=window.document.form1.pwd.value;
+var emailid=window.document.form1.vamsi.value;
+var name2=window.document.form1.name1.value;
+var name3=window.document.form1.name4.value;
+check2=new RegExp("^\w+@[a-zA-Z_]+/\.[a-zA-Z]{2,3}$","g");
+check3=new RegExp("[a-zA-Z0-9]@[a-z]{3,}\.[a-z]{2,}","g");
+check=new RegExp("[^a-zA-Z]","g");
+check1=new RegExp("[^0-9]","g");
+if(name2.match(check))
+{
+alert("name should contain only alphabets");
+return false;
+}
+if(name2.length<6)
+{
+alert("name should contain atleast 6 letters");
+return false;
+}
+if(password.length<6)
+{
+alert("password should of atleast 6 letters");
+return false;
+}if(name3.length<6)
+{
+alert("password and conform should be same ");
+return false;
+}
+if(password.length!=name3.length)
+{
+alert("password and conform should be same");
+return false;
+}
+for(var i=0;i<password.length;i++)
+{
+if(password[i]!=name3[i])
+{
+alert("password and conform should be same");
+return false;
+}
+}
+if(phoneno.match(check1))
+{
+alert("phoneno should contain numbers only");
+return false;
+}
+if(emailid.length==0)
+{
+alert("enter a correct email");
+return false;
+}
+if(!emailid.match(check3))
+{
+alert("enter a correct email");
+return false;
+}
+if(phoneno.length<10)
+{
+alert("phoneno should contain atleast 10 numbers");
+return false;
+}
+return true;
+}
+</script>
+</head>
+<body style="background-color:violet">
+<center><br>
+<h1><center><style="font-size:10">Sign-up</h1><hr><br>
+<form name="form1" method="post" action="register.php">
+<table>
+<font size='5'>
+<tr><td>username:</td><td><input type="text" name="name1"></td></tr>
+<tr><td>password:</td><td><input type="password" name="pwd"/></td></tr>
+<tr><td>conform:</td><td><input type="password" name="name4"></td></tr>
+<tr><td>email:</td><td><input type="text" name="vamsi"></td></tr>
+<tr><td>phoneno:</td><td><input type="text" name="phone"/></td></tr></table>
+<input type="submit" value="register" onclick="return validate(this)"/><br><br>
+<input type="reset" value="reset" /><br><br>
+</font>
+</form>
+</center>
+</body>
+</html>
